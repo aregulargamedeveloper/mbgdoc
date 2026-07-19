@@ -10,7 +10,7 @@ description: The functions that you can call on skill utils
 Main tools!
 {% endhint %}
 
-#### :Stun
+#### ~~:Stun~~ DEPRECATED use statuseffects
 
 * arguments
   * Target : _humanoiddata_, the target to stun
@@ -19,7 +19,7 @@ Main tools!
 * returns
   * stun object: you can run :cancel on it to stop the stun
 
-#### :Ragdoll
+#### ~~:Ragdoll~~ DEPRECATED use statuseffects
 
 * arguments
   * Target : _humanoiddata_, the target to ragdoll
@@ -29,7 +29,7 @@ Main tools!
 * extra info:
   * ragdolls set iframe level to 20 if it was already below 20
 
-#### :SetIFrameValue
+#### ~~:SetIFrameValue~~ DEPRECATED use value modifiers
 
 * arguments
   * Target : humanoiddata
