@@ -1,3 +1,7 @@
+---
+icon: comment-question
+---
+
 # How to : Counters
 
 Counters are moves that punish your opponent if youre hit during its effect (and often punishing you if youre not hit during its effect)\

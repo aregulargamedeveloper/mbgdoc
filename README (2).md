@@ -1,3 +1,7 @@
+---
+icon: comment-question
+---
+
 # How to : Use value modifiers
 
 Value modifiers are an integral part of the mbg system.
@@ -20,8 +24,9 @@ speedmodifier.ValueRefreshed:Connect(function(val)
     --^ EXAMPLE
 end)
 
-local modification_1 = speedmodifier:AddModifier({},"+",1) -- adds one to the speed
-local modification_2 = speedmodifier:AddModifier({},"*",2) --.. then multiplies it by 2
+local modification_1 = speedmodifier:AddModifier({"AdditionModifier"},"+",1) -- adds one to the speed
+local modification_2 = speedmodifier:AddModifier({"MultiplicationModifier"},"*",2) --.. then multiplies it by 2
+-- ^ the strings "AdditionModifier" and "MultiplicationModifier" are tags, not required!
 
 -- <a data-footnote-ref href="#user-content-fn-1">if youre using value modifiers inside a skill in mbg...</a>
 -- skillutils:AddValueModifier(speedmodifier,{},"*",2)
@@ -35,6 +40,23 @@ task.wait(3)
 modification_2:RemoveModifier() -- now removes the *2 modification
 
 -- the value goes back to 16 here...
+
+--compared to..
+
+local value = 16
+
+value+=1
+print(`The new value is: {val}`)
+
+value*=2
+print(`The new value is: {val}`)
+
+value -= 1
+print(`The new value is: {val}`)
+
+value /= 2
+print(`The new value is: {val}`)
+-- the value goes to 16.5 here, which is not the original value!
 </code></pre>
 
 

@@ -1,5 +1,6 @@
 ---
 description: a reference to skillutils
+icon: gear-code
 ---
 
 # skillutils, and how they work

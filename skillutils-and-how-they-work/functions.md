@@ -1,5 +1,6 @@
 ---
 description: The functions that you can call on skill utils
+icon: function
 ---
 
 # functions
