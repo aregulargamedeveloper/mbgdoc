@@ -9,5 +9,6 @@
 
 ***
 
+* [Hiding/Showing Skills](hiding-showing-skills.md)
 * [skillutils, and how they work](<README (1).md>)
   * [functions](skillutils-and-how-they-work/functions.md)
