@@ -23,7 +23,7 @@ end
 -- or:
 
 -- CONCEPT
-Hdata:QuickVisibleSkillByGroup("Awakening",false)
+Hdata:quickVisibleSkillByGroup("Awakening",false)
 ```
 
 ### Removing Skills (:Destroy)
@@ -35,5 +35,5 @@ if not myskill then
     return
 end
 
-myskill:Destroy()
+myskill:destroy()
 ```
