@@ -58,10 +58,10 @@ Main tools!
     * target: who was attempted to be hit
   * .Active, boolean, if the hitbox is active currently
 
-## Placetakers&#x20;
+## _<mark style="color:$primary;">**Placetakers**</mark>_&#x20;
 
 {% hint style="info" %}
-Use these instead of default roblox functions
+_**Use these instead of default roblox functions**_
 {% endhint %}
 
 #### :Wait

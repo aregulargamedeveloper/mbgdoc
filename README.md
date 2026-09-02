@@ -25,7 +25,7 @@ local modifier = skillutils:AddValueModifier(hdata.invincibilitymodifier,{},"max
 local hitbox = hdata.hitwhileunstoppable:Wait(.75) -- script signals in mbg have a custom timeout time
 
 if not hitbox then
-    print("The counter was missed!")
+    print "The counter was missed!"
     task.wait(3)
     -- cancel the slowness?
     return
