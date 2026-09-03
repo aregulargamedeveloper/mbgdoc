@@ -5,7 +5,7 @@ icon: gear-code
 
 # skillutils, and how they work
 
-Skillutils (skill utilities) is an object passed in to every skill as the second parameter. It is used for everything skill related.
+Skillutils (skill utilities) is an object passed in to every skill as the first parameter. It is used for everything skill related.
 
 ### What its used for
 
