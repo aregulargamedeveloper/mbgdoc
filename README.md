@@ -12,19 +12,26 @@ to change invincibility, you use the hdata.invincibilitymodifier value modifier.
 
 Make sure to use skillutils:AddValueModifier, since counters are skills.
 
-Now to detect when theyre hit during the counter, use the hdata.hitwhileunstoppable script signal
+Now to detect when theyre hit during the counter, use the hdata.hitwhileunstoppable script signal with a promise
 
-Heres some sample code:
+Here's some sample code:
 
-```lua
+<pre class="language-luau"><code class="lang-luau"><strong>const Promise = require() -- &#x3C; put your path to promise
+</strong><strong>
+</strong>-----------------
+
 -- hdata/"plr" and skillutils passed in here.....
 
 -- apply slowness here maybe?
 
 local modifier = skillutils:AddValueModifier(hdata.invincibilitymodifier,{},"max",15)
-local hitbox = hdata.hitwhileunstoppable:Wait(.75) -- script signals in mbg have a custom timeout time
+local success,hitbox = promise.fromEvent(hdata.hitwhileunstoppable):timeout(0.75):andThen(function(hitbox)
+    return true,hitbox
+end):catch(function()
+    return false
+end):expect()
 
-if not hitbox then
+if not success then
     print "The counter was missed!"
     task.wait(3)
     -- cancel the slowness?
@@ -38,8 +45,7 @@ if not hdata then
     return
 end
     
-    -- do your counter logic here
-end))
+-- do your counter logic here
 
-```
+</code></pre>
 
