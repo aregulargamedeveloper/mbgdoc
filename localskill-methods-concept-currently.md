@@ -39,7 +39,7 @@ to hide by group:
 
 ```lua
 for _,skill in Hdata:filterLocalSkillsByGlobalProperty("Group","Awakening") do
-    Skill:Visible(false)
+    Skill:visible(false)
 end
 
 -- or:
@@ -53,7 +53,7 @@ Hdata:quickVisibleSkillByGroup("Awakening",false)
 ```lua
 local myskill = Hdata:filterLocalSkillsByGlobalProperty("Name","MySkill")[1]
 if not myskill then
-    warn("this skill doesnt exist")
+    warn "this skill doesnt exist"
     return
 end
 

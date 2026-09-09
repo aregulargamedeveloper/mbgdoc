@@ -1,51 +1,33 @@
 ---
-icon: comment-question
+icon: exclamation
 ---
 
-# How to : Counters
+# Info
 
-Counters are moves that punish your opponent if youre hit during its effect (and often punishing you if youre not hit during its effect)\
-\
-Counters in mbg use IFrames (hdata.data.invincibility)
+Info about Mbg's system
 
-to change invincibility, you use the hdata.invincibilitymodifier value modifier. if you dont know how to use value modifiers, read the [README (2).md](<README (2).md> "mention") page.
+## Style guide & Ease of use
 
-Make sure to use skillutils:AddValueModifier, since counters are skills.
+Every variable is formatted in "camelCase". .inOtherWords .everythingIsFormatted .likeThis.
 
-Now to detect when theyre hit during the counter, use the hdata.hitwhileunstoppable script signal with a promise
+If a variable is not formatted in camelCase, Please ping me! `@not_missing`
 
-Here's some sample code:
+Every system should be in a folder. There should be NO loose modules inside ReplicatedStorage or ServerStorage.&#x20;
 
-<pre class="language-luau"><code class="lang-luau"><strong>const Promise = require() -- &#x3C; put your path to promise
-</strong><strong>
-</strong>-----------------
+## Module loader
 
--- hdata/"plr" and skillutils passed in here.....
+Mbg utilizes Knit by sleitnick.&#x20;
 
--- apply slowness here maybe?
+Eveything is formatted into services
 
-local modifier = skillutils:AddValueModifier(hdata.invincibilitymodifier,{},"max",15)
-local success,hitbox = promise.fromEvent(hdata.hitwhileunstoppable):timeout(0.75):andThen(function(hitbox)
-    return true,hitbox
-end):catch(function()
-    return false
-end):expect()
+## Fwarn and Fprint
 
-if not success then
-    print "The counter was missed!"
-    task.wait(3)
-    -- cancel the slowness?
-    return
-end
+Fwarn and Fprint are part of systems. They allow distinguishing of prints from systems. Put simply: fwarn just puts \[SERVICENAME] before what you warn. Same with fprint
 
-local hdata = hitbox.hdata
+## Promises
 
-if not hdata then
-    warn("No hdata linked to this hitbox!")
-    return
-end
-    
--- do your counter logic here
+Knit itself utilizes promises and so does mbg. Please use them when applicable!&#x20;
 
-</code></pre>
+Read [README (2).md](<README (2).md> "mention") to find the most common way promises are used!!
 
+If you dont know how to use promises: Feel free to ask me how to use them or watch a tutorial.

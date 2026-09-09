@@ -16,7 +16,7 @@ Skillutils (skill utilities) is an object passed in to every skill as the first 
 
 ## Default Values
 
-* mainstun? :
+* mainStun? :
   * a weak stun object applied to the skill
   * makes sure you cant use other moves during this skill
   * only exists if skill.usesdefaultstun is true or nil
@@ -24,9 +24,9 @@ Skillutils (skill utilities) is an object passed in to every skill as the first 
   * &#x20;a list of hitboxes associated with the skill
 * ragdolls
   * a list of ragdolls associated with the skill
-* associatedanimations
+* associatedAnimations
   * a list of animations associated with the move
-* appliedstuns
+* appliedStuns
   * a list of stuns associated with the move
   * includes skillutils.mainstun
 * skill

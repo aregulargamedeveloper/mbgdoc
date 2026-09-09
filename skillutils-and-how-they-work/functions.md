@@ -11,7 +11,7 @@ icon: function
 Main tools!
 {% endhint %}
 
-#### ~~:Stun~~ DEPRECATED use statuseffects
+#### ~~:stun~~ REMOVED use statuseffects
 
 * arguments
   * Target : _humanoiddata_, the target to stun
@@ -20,7 +20,7 @@ Main tools!
 * returns
   * stun object: you can run :cancel on it to stop the stun
 
-#### ~~:Ragdoll~~ DEPRECATED use statuseffects
+#### ~~:ragdoll~~ REMOVED use statuseffects
 
 * arguments
   * Target : _humanoiddata_, the target to ragdoll
@@ -30,14 +30,14 @@ Main tools!
 * extra info:
   * ragdolls set iframe level to 20 if it was already below 20
 
-#### ~~:SetIFrameValue~~ DEPRECATED use value modifiers
+#### ~~:setIFrameValue~~ DEPRECATED use value modifiers
 
 * arguments
   * Target : humanoiddata
   * value : number, the iframe level to set
 * returns: nothing
 
-#### :Hitbox
+#### ~~:hitbox~~ DEPRECATED, RENAMED TO :blockHitbox
 
 *   arguments
 
@@ -58,13 +58,34 @@ Main tools!
     * target: who was attempted to be hit
   * .Active, boolean, if the hitbox is active currently
 
+#### :sphereHitbox
+
+*   arguments
+
+    * hitboxparams : table:
+
+    <pre><code>ignored : {} | Player,
+    <strong>hitboxPosition : () -> Vector3 | Vector3,-- function returning a vector3 or just a vector3
+    </strong><strong>hitboxRadius : () -> number | number, -- function returning a vector3 or just a vector3
+    </strong><strong>power : number, -- iframe bypass level
+    </strong><strong>accuracy : number, -- how many times per second the hitbox is checked
+    </strong><strong>multipleDetections : boolean, -- if the hitboxx can hit a single player multiple times
+    </strong></code></pre>
+* returns: hitboxobject:
+  * :cancel(), stops the hitbox
+  * .touched, scriptsignal
+    * target: who was hit
+  * .hitUnstoppableUser, scriptsignal
+    * target: who was attempted to be hit
+  * .active, boolean, if the hitbox is active currently
+
 ## _<mark style="color:$primary;">**Placetakers**</mark>_&#x20;
 
 {% hint style="info" %}
 _**Use these instead of default roblox functions**_
 {% endhint %}
 
-#### :Wait
+#### :wait
 
 * arguments
   * delay: number, time to wait
@@ -73,7 +94,7 @@ _**Use these instead of default roblox functions**_
   * _**USE THIS IN PLACE OF task.wait!!!!!!!!!!!!!!!!!**_
   * waits based on skillutils.speed value
 
-#### :Delay
+#### :delay
 
 * arguments
   * delay: number, time to wait
@@ -83,7 +104,7 @@ _**Use these instead of default roblox functions**_
   * _**USE THIS IN PLACE OF task.wait!!!!!!!!!!!!!!!!!**_
   * delays based on skillutils.speed value
 
-#### :LoadAnimation
+#### :loadAnimation
 
 * arguments
   * Target: humanoid data, character, humanoid, or animator, which player to load the animation
@@ -93,7 +114,7 @@ _**Use these instead of default roblox functions**_
 * extra info:
   * _**USE THIS IN PLACE OF animator:LoadAnimation!!!!!!!!!!!!!!!!!**_
 
-#### :DealDamage
+#### :dealDamage
 
 * arguments
   * Target: humanoid data, who to deal the damage to
@@ -105,32 +126,17 @@ _**Use these instead of default roblox functions**_
 * extra info:
   * USE THIS IN PLACE OF humanoid:TakeDamage/humanoid.Health-=
 
-#### :ApplyForce
+#### :applyForce
 
 * arguments
   * Target: humanoid data
   * direction: direction to apply the force in
   * debris: number, how long for the force to last
-  * maxforce: the force's power
+  * maxForce: the force's power
 * returns: nothing
 * extra info:
   * USE THIS IN PLACE OF ANY LINEAR FORCE APPLICATIONS
   * this isnt a simple utility because it has networking built into it
-
-## Simple Utilities
-
-{% hint style="info" %}
-These arent unique to skills, they are simply timesaver built in functions
-{% endhint %}
-
-#### :MakeAttractForce
-
-* arguments
-  * user1: humanoiddata, first player to apply the force from&#x20;
-    * <i class="fa-arrow-up">:arrow-up:</i> (usually the player using the move)
-  * user2: humanoiddata, the player to apply the force on
-  * offset: cframe, the offset to apply it on
-* returns: LineForce (you gotta change properties of this!)
 
 ## Primarily Backend
 
@@ -138,11 +144,11 @@ These arent unique to skills, they are simply timesaver built in functions
 these are mostly used in backend but are able to be used in the move!
 {% endhint %}
 
-#### :SelfDestruct
+#### :selfDestruct
 
 * Cancels the move and runs the cancel function
 
-#### :Abort
+#### :abort
 
 * Cancels the move without running the cancel function
 

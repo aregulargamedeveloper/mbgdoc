@@ -1,9 +1,11 @@
 # Table of contents
 
+* [Info](README.md)
+
 ## How to:
 
-* [How to : Counters](README.md)
-* [How to : Use value modifiers](<README (2).md>)
+* [How to : Counters](<README (2).md>)
+* [How to : Use value modifiers](<README (2) (1).md>)
 
 ## SKILLS
 

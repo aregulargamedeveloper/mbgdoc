@@ -2,93 +2,50 @@
 icon: comment-question
 ---
 
-# How to : Use value modifiers
+# How to : Counters
 
-Value modifiers are an integral part of the mbg system.
+Counters are moves that punish your opponent if youre hit during its effect (and often punishing you if youre not hit during its effect)\
+\
+Counters in mbg use IFrames (hdata.data.invincibility)
 
-Using them is similar to script signals, they are reusable types.
+to change invincibility, you use the hdata.invincibilityModifier value modifier. if you dont know how to use value modifiers, read the [README (2) (1).md](<README (2) (1).md> "mention") page.
 
-Value modifiers are numbers, you can add to them, multiply them, divide them, subtract from them, min/max them, and exponentiate them. Each "Modification" applied to your modifier has a operator and a value, the operator is the "action" to apply to the value modifier, so for example "\*" for multiplication, or "min" for clamping the number under \<VALUE>.&#x20;
+Make sure to use skillutils:addValueModifier, since counters are skills.
 
+Now to detect when theyre hit during the counter, use the hdata.hitWhileUnstoppable script signal with a promise
 
+Here's some sample code:
 
-sample code:<br>
+<pre class="language-luau"><code class="lang-luau"><strong>const Promise = require() -- &#x3C; put your path to promise
+</strong><strong>
+</strong>-----------------
 
-<pre class="language-lua"><code class="lang-lua">local ValueModifiers = require(&#x3C;PATH_TO_MODULE>)
+-- hdata/"plr" and skillutils passed in here.....
 
-local speedmodifier = ValueModifiers.new(16)
+-- apply slowness here maybe?
 
-speedmodifier.ValueRefreshed:Connect(function(val)
-    print(`The new value is: {val}`)
-    --character.Humanoid.WalkSpeed = val
-    --^ EXAMPLE
-end)
+local modifier = skillutils:addValueModifier(hdata.invincibilitymodifier,{},"max",15)
+local success,hitbox = promise.fromEvent(hdata.hitwhileunstoppable):timeout(0.75):andThen(function(hitbox)
+    return true,hitbox
+end):catch(function()
+    return false
+end):expect()
 
-local modification_1 = speedmodifier:AddModifier({"AdditionModifier"},"+",1) -- adds one to the speed
-local modification_2 = speedmodifier:AddModifier({"MultiplicationModifier"},"*",2) --.. then multiplies it by 2
--- ^ the strings "AdditionModifier" and "MultiplicationModifier" are tags, not required!
+if not success then
+    print "The counter was missed!"
+    skillUtils:wait(3)
+    -- cancel the slowness?
+    return
+end
 
--- <a data-footnote-ref href="#user-content-fn-1">if youre using value modifiers inside a skill in mbg...</a>
--- skillutils:AddValueModifier(speedmodifier,{},"*",2)
+local hdata = hitbox.hdata
 
-task.wait(5)
+if not hdata then
+    warn("No hdata linked to this hitbox!") -- use fwarn if your module needs it!
+    return
+end
+    
+-- do your counter logic here
 
-modification_1:RemoveModifier() -- removes the extra one from it
-
-task.wait(3)
-
-modification_2:RemoveModifier() -- now removes the *2 modification
-
--- the value goes back to 16 here...
-
---compared to..
-
-local value = 16
-
-value+=1
-print(`The new value is: {val}`)
-
-value*=2
-print(`The new value is: {val}`)
-
-value -= 1
-print(`The new value is: {val}`)
-
-value /= 2
-print(`The new value is: {val}`)
--- the value goes to 16.5 here, which is not the original value!
 </code></pre>
 
-
-
-inside skills; always use :AddModifierValue method of skill utils with the value modifier you want to use
-
-
-
-Heres the methods:\
-`module.new(defaultvalue:number,autorefresh:boolean) -> valuemodifier`
-
-`export type ValueModifier = {`\
-&#x20;`operator: string, -- "+", "-", "*", "/", "^","min","max"`\
-&#x20;`value: number, -- the numeric value`\
-&#x20;`tags: {string}, -- list of tags`\
-&#x20;`parentModification: any?,-- reference to the parent modifier object`\
-&#x20;`RemoveModifier: (self: ValueModifier) -> (),`\
-&#x20;`ChangeModifierValue: (self: ValueModifier,NewValue : number) -> ()`\
-`}`
-
-`export type ModifierCollection = {`\
-&#x20;`Modifiers: {ValueModifier},`\
-&#x20;`DefaultValue: number,`\
-&#x20;`AutoRefresh: boolean,`\
-&#x20;`ValueRefreshed: scriptsignal.scriptsignal,`\
-&#x20;`AddModifier: (self: ModifierCollection, tags: {string}, modifiertype: string, value:  number, index: number?) -> ValueModifier,`\
-&#x20;`RemoveModifier: (self: ModifierCollection, modifiertag: string) -> (),`\
-&#x20;`FindModifiers: (self: ModifierCollection, modifiertag: string) -> {ValueModifier},`\
-&#x20;`GetAllModifiers: (self: ModifierCollection) -> {ValueModifier},`\
-&#x20;`Refresh: (self: ModifierCollection) -> number`\
-`}`<br>
-
-
-
-[^1]: 
