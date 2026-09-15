@@ -26,9 +26,9 @@ type hdata = {
 
 
 
-### Hiding/Showing (:Visible)
+### Hiding/Showing (:visible)
 
-Each `SkillInstance` object contains a Skill property linking to the actual skill data as well as a Visible property and Cooldown property. A **GLOBAL** skill object can have a Group property, Here's the basic/default groupings you can add to a skill:
+Each `SkillInstance` object contains a Skill property linking to the actual skill data as well as a Visible property and Cooldown property. A **GLOBAL** skill object can have a group property, Here's the basic/default groupings you can add to a skill:
 
 ```
 Awakening,
@@ -38,20 +38,20 @@ Base
 to hide by group:
 
 ```lua
-for _,skill in Hdata:filterLocalSkillsByGlobalProperty("Group","Awakening") do
+for _,skill in Hdata:filterLocalSkillsByGlobalProperty("group","awakening") do
     Skill:visible(false)
 end
 
 -- or:
 
 -- CONCEPT
-Hdata:quickVisibleSkillByGroup("Awakening",false)
+Hdata:quickVisibleSkillByGroup("awakening",false)
 ```
 
 ### Removing Skills (:destroy)
 
 ```lua
-local myskill = Hdata:filterLocalSkillsByGlobalProperty("Name","MySkill")[1]
+local myskill = Hdata:filterLocalSkillsByGlobalProperty("name","MySkill")[1]
 if not myskill then
     warn "this skill doesnt exist"
     return

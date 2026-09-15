@@ -4,7 +4,7 @@ icon: exclamation
 
 # Info
 
-Info about Mbg's system
+## **Info about Mbg's system**
 
 ## Style guide & Ease of use
 

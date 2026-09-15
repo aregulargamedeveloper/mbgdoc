@@ -30,7 +30,7 @@ Main tools!
 * extra info:
   * ragdolls set iframe level to 20 if it was already below 20
 
-#### ~~:setIFrameValue~~ DEPRECATED use value modifiers
+#### ~~:setIFrameValue~~ REMOVED use value modifiers
 
 * arguments
   * Target : humanoiddata
@@ -52,11 +52,11 @@ Main tools!
     </strong></code></pre>
 * returns: hitboxobject:
   * :cancel(), stops the hitbox
-  * .Touched, scriptsignal
+  * .touched, scriptsignal
     * target: who was hit
-  * .HitUnstoppableUser, scriptsignal
+  * .hitUnstoppableUser, scriptsignal
     * target: who was attempted to be hit
-  * .Active, boolean, if the hitbox is active currently
+  * .active, boolean, if the hitbox is active currently
 
 #### :sphereHitbox
 
@@ -136,7 +136,7 @@ _**Use these instead of default roblox functions**_
 * returns: nothing
 * extra info:
   * USE THIS IN PLACE OF ANY LINEAR FORCE APPLICATIONS
-  * this isnt a simple utility because it has networking built into it
+  * this isn't a simple utility because it has networking built into it
 
 ## Primarily Backend
 

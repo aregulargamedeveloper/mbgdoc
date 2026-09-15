@@ -25,7 +25,7 @@ Here's some sample code:
 -- apply slowness here maybe?
 
 local modifier = skillutils:addValueModifier(hdata.invincibilitymodifier,{},"max",15)
-local success,hitbox = promise.fromEvent(hdata.hitwhileunstoppable):timeout(0.75):andThen(function(hitbox)
+local success,hitbox = promise.fromEvent(hdata.hitwhileunstoppable):timeout(0.75*SkillUtils.speed):andThen(function(hitbox)
     return true,hitbox
 end):catch(function()
     return false
@@ -41,7 +41,7 @@ end
 local hdata = hitbox.hdata
 
 if not hdata then
-    warn("No hdata linked to this hitbox!") -- use fwarn if your module needs it!
+    warn "No hdata linked to this hitbox!" -- use fwarn if your module has it!
     return
 end
     
