@@ -1,5 +1,7 @@
 # Table of contents
 
+## MUST READ
+
 * [Info](README.md)
 
 ## How to:

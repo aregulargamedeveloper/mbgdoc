@@ -1,24 +1,65 @@
 ---
-icon: exclamation
+icon: lightbulb-exclamation-on
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
+  anchors:
+    visible: true
 ---
 
 # Info
-
-## **Info about Mbg's system**
 
 ## Style guide & Ease of use
 
 Every variable is formatted in "camelCase". .inOtherWords .everythingIsFormatted .likeThis.
 
-If a variable is not formatted in camelCase, Please ping me! `@not_missing`
+**If a variable is not formatted in camelCase, Please ping me! `@not_missing`**
 
-Every system should be in a folder. There should be NO loose modules inside ReplicatedStorage or ServerStorage.&#x20;
+Every system should be in a folder. There should be NO loose modules inside ReplicatedStorage or ServerStorage.
+
+**The exception to camel case** is service names. Services are named in Pascal case. .InOtherWords .ServicesAreFormatted .LikeThis
 
 ## Module loader
 
 Mbg utilizes Knit by sleitnick.&#x20;
 
 Eveything is formatted into services
+
+For those inexperienced with a module loader, this is very important
+
+_<mark style="color:$danger;">**DO NOT REQUIRE MODULES DIRECTLY!!!!!!!!!!!!!!!!!!!!!!!!!**</mark>_
+
+instead, create a blank variable\
+eg:<br>
+
+```luau
+local SkillService -- blank (nil) variable
+
+-- later...
+
+function MyService:KnitInit()
+    SkillService = Knit.GetService("SkillService")
+end
+```
+
+* Why?
+
+Recursive requiring is the dilemma in Lua (and luau) that a module loader fixes. Instead of A needing B on startup And B needing A on startup (halting the game because one needs another) instead, they get eachother on KnitInit which just makes them able to talk to eachother without any issues!
 
 ## Fwarn and Fprint
 

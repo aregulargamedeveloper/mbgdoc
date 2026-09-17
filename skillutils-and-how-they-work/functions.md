@@ -5,7 +5,7 @@ icon: function
 
 # functions
 
-## Primary
+## <mark style="color:$primary;">Primary</mark>
 
 {% hint style="info" %}
 Main tools!

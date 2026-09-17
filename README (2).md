@@ -16,9 +16,13 @@ Now to detect when theyre hit during the counter, use the hdata.hitWhileUnstoppa
 
 Here's some sample code:
 
-<pre class="language-luau"><code class="lang-luau"><strong>const Promise = require() -- &#x3C; put your path to promise
-</strong><strong>
-</strong>-----------------
+```luau
+const ServerStorage = game:GetService("ServerStorage")
+const Packages = ServerStorage.Packages
+const Promise = require(Packages.Promise) -- < put your path to promise
+const Knit = require(Packages.Knit)
+
+-----------------
 
 -- hdata/"plr" and skillutils passed in here.....
 
@@ -47,5 +51,5 @@ end
     
 -- do your counter logic here
 
-</code></pre>
+```
 
